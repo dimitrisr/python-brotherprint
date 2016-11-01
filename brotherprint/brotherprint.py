@@ -1047,4 +1047,22 @@ class BrotherPrint:
         self.select_obj(name)
         self.insert_into_obj(data)
     
-    
+    def select_priority_print_option(self, action):
+        ''' Default is 0 - Priority to print speed. Set to 1 for priority to print quality.
+            Required for QL-720NW and barcodes.
+        Args:
+            action: on or off.
+        Returns:
+            None
+        Raises:
+            RuntimeError( on or off not selected)
+        '''
+        if action == 'on':
+            action = '1'
+        elif action == 'off':
+            action = '0'
+        else:
+            raise RuntimeError('Invalid action for function select_priority_print_option')
+        self.send('^QS'+action)
+
+

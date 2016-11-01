@@ -43,7 +43,7 @@ Make sure to end with the print page command, signifying the end of a label.
     printjob.print_page(<cut_setting>)
 
 ### Template Printing
-Create your template and upload it to the printer. After creating a BrotherLabel object, call template_mode() to set the printer to template mode, and then use the template commands to fill in your label.
+Create your template and upload it to the printer. After creating a BrotherLabel object, call template_mode() to set the printer to template mode, and then use the template commands to fill in your label. Be sure to download the P-Touch Template Tools from support.brother.com under utilities of your label printer. It has a wealth of information.
 
     printjob.template_mode()
     printjob.template_init()
@@ -51,5 +51,9 @@ Create your template and upload it to the printer. After creating a BrotherLabel
     printjob.select_and_insert(<field_name>, <data>)
     printjob.select_and_insert(<field_name2>, <data2>)
     printjob.select_and_insert(<field_name3>, <data3>)
+    # For QL-720NW with barcodes on label, turn on:
+    # printjob.select_priority_print_option('on')
     printjob.template_print()
+
+ 
 
