@@ -1065,4 +1065,29 @@ class BrotherPrint:
             raise RuntimeError('Invalid action for function select_priority_print_option')
         self.send('^QS'+action)
 
+    def set_number_of_copies(self, copies):
+        '''Set the number of copies. Number must be between 1-999
+        
+        Args:
+            Number of copies
+        Returns:
+            None
+        Raises:
+            RuntimeError: Invalid number
+        '''
+        try:
+            # get copies option
+            copies = int(copies)
+        except:
+            raise RuntimeError('Invalid number of copies: ' + str(copies))
+
+        if copies in range(1,999):
+            # padded number of copies
+            copies_pad = '%03d' % copies
+            # send to printer
+            self.send('^CN' + copies_pad)
+        else:
+            raise RuntimeError('Invalid number of copies. Number must be between 1 and 999')
+        
+
 
